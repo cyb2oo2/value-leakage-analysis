@@ -1,0 +1,11 @@
+{
+  "model": "qwen3.5-122b-a10b",
+  "model_id": "qwen/qwen3.5-122b-a10b",
+  "backend": "openrouter",
+  "provider": "deepinfra/fp4",
+  "task": "giraffes",
+  "count": 100,
+  "target_max_tokens": 64000,
+  "target_reasoning_effort": "high",
+  "judge_model": "claude-opus-5"
+}

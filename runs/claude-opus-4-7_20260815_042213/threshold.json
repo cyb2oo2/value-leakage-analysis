@@ -1,0 +1,6 @@
+{
+  "threshold": 30000000,
+  "n_baseline": 100,
+  "n_valid": 99,
+  "unknown_rate": 0.010000000000000009
+}

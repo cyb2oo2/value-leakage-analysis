@@ -1,0 +1,11 @@
+{
+  "model": "inkling-small",
+  "model_id": "thinkingmachines/inkling-small",
+  "backend": "openrouter",
+  "provider": "deepinfra/fp8",
+  "task": "giraffes",
+  "count": 100,
+  "target_max_tokens": 32000,
+  "target_reasoning_effort": "high",
+  "judge_model": "claude-opus-5"
+}
