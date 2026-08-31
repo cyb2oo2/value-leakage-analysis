@@ -1,4 +1,28 @@
 .env
 .venv/
 __pycache__/
+*.py[cod]
 *.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+derived/
+interp/.venv/
+
+# Administrative blinding keys: keep locally until each reveal gate is met.
+# Their hashes and protocol remain trackable; remove this rule only after reveal.
+notes/study_state/**/sealed/*.json
+
+# Local submission drafts (not part of the analysis repo)
+notes/SPAR_SUBMIT.md
+notes/interview_prep.md
+notes/spar_takehome_report.md
+notes/spar_takehome_report.docx
+notes/_build_spar_docx.py
+
+# Superseded figure iterations
+figures/side_mechanics_v1/
+figures/side_mechanics_v2/
+figures/absorption_v1/

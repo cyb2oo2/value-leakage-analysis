@@ -1,0 +1,81 @@
+{
+  "schema_version": "1.0",
+  "reviewed_at": "2026-08-25",
+  "scope": "source-and-environment compatibility only; no model or lens was downloaded or executed",
+  "upstream": {
+    "repository": "https://github.com/anthropics/jacobian-lens",
+    "commit": "581d398613e5602a5af361e1c34d3a92ea82ba8e",
+    "package": "jlens",
+    "package_version": "0.1.0",
+    "maintenance_status": "reference implementation; upstream says it is not maintained",
+    "requires_python": ">=3.10",
+    "declared_dependencies": [
+      "torch",
+      "huggingface_hub",
+      "transformers>=5.5",
+      "numpy"
+    ],
+    "observed_lock_versions": {
+      "torch": "2.12.0",
+      "transformers": "5.9.0",
+      "huggingface-hub": "1.16.1",
+      "numpy": [
+        "2.2.6",
+        "2.4.6"
+      ]
+    }
+  },
+  "future_target": {
+    "model_id": "Qwen/Qwen3.5-4B",
+    "model_head_observed_at_review": "851bf6e806efd8d0a36b00ddf55e13ccb7b8cd0a",
+    "parameters_billions": 4,
+    "hidden_size": 2560,
+    "num_hidden_layers": 32,
+    "official_upstream_walkthrough_target": true,
+    "official_prefitted_lens": {
+      "repository": "neuronpedia/jacobian-lens",
+      "revision": "qwen-n1000",
+      "resolved_revision": "16a01f309fcec900fdcec3f4cd5b64f3d00e4d5a",
+      "filename": "qwen3.5-4b/jlens/Salesforce-wikitext/Qwen3.5-4B_jacobian_lens_n1000.pt",
+      "size_bytes": 406332644,
+      "sha256": "1f9a8f8fd593f0ffec1a9640993257ca4560f8ae3e5602315643d5cc6818534e",
+      "requested_fit_prompts": 1000,
+      "recorded_prompts_fitted": 417,
+      "fit_config_pins_model_revision": false
+    }
+  },
+  "local_observation": {
+    "os": "Windows 11",
+    "wsl_enabled": false,
+    "gpu": "NVIDIA GeForce RTX 4070 Ti",
+    "gpu_memory_mib": 12282,
+    "driver_version": "591.86",
+    "nvcc_visible": false,
+    "behavioral_python": "3.12.14",
+    "uv": "0.12.5"
+  },
+  "derived_size_lower_bounds": {
+    "model_weights_bfloat16_decimal_gb": 8.0,
+    "default_fitted_source_layers": 31,
+    "saved_lens_float16_mib": 387.5,
+    "loaded_lens_float32_cpu_mib": 775,
+    "fitting_checkpoint_float32_mib": 775,
+    "note": "Arithmetic lower bounds only; they exclude activations, logits, allocator overhead, temporary tensors, and fitting backward state."
+  },
+  "verification_state": {
+    "upstream_source_reviewed": true,
+    "official_walkthrough_names_target_model": true,
+    "local_import_test": false,
+    "local_model_load_test": false,
+    "local_lens_apply_test": false,
+    "local_lens_fit_test": false
+  },
+  "guards": {
+    "allow_dependency_install": false,
+    "allow_model_download": false,
+    "allow_lens_download": false,
+    "allow_lens_fit": false,
+    "allow_qwen_122b": false,
+    "allow_cpu_offload_122b": false
+  }
+}

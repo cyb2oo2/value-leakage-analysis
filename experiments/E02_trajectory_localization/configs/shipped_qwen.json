@@ -1,0 +1,12 @@
+{
+  "run_dir": "runs/qwen3.5-122b-a10b_20260815_030702",
+  "output_dir": "figures/E02_shipped_qwen_seed20260825",
+  "runs_root": "runs",
+  "seed": 20260825,
+  "grid_points": 1000,
+  "window_fraction": 0.2,
+  "outlier_factor": 10,
+  "bootstrap_resamples": 2000,
+  "confidence": 0.95,
+  "figure_dpi": 150
+}

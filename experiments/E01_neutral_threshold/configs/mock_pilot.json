@@ -1,0 +1,30 @@
+{
+  "schema_version": "value-leakage.pilot-config/v1",
+  "experiment_id": "E01-neutral-threshold-mock-smoke",
+  "prompt_spec": "experiments/E01_neutral_threshold/prompt_variants.v1.json",
+  "prompt_version": "E01-neutral-threshold-v1",
+  "conditions": [
+    "above_good",
+    "below_good",
+    "neutral_equal_good"
+  ],
+  "threshold": 100000000,
+  "model_id": "mock/qwen-3.5-122b-a10b",
+  "backend": "mock",
+  "provider": "local-deterministic-mock",
+  "n": 2,
+  "temperature": 0.7,
+  "top_p": 0.95,
+  "reasoning": {
+    "effort": "mock",
+    "capture": "synthetic-visible-trace"
+  },
+  "max_tokens": 2048,
+  "seed": 20260825,
+  "judge": {
+    "enabled": false,
+    "model_id": null,
+    "reason": "No judge is run in the Stage 6 scaffold smoke test."
+  },
+  "output_directory": "derived/E01_neutral_threshold/mock_pilot_seed20260825"
+}

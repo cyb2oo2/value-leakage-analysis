@@ -1,0 +1,26 @@
+{
+  "schema_version": "value-leakage.private-key-hash-anchor/v2",
+  "study_id": "qwen122b_metadata_blind_v2",
+  "public_bundle": "derived/E02_trajectory_localization/qwen122b_metadata_blind_v2",
+  "annotation": "notes/annotations/qwen122b_discovery_v2.csv",
+  "discovery_total": 36,
+  "holdout_total": 60,
+  "reserve_total": 98,
+  "bundle_manifest_sha256": "c7fa12cb773f8864fa85cef394dcc1463cab2be87078458a8491385ab560b501",
+  "discovery_mapping_commitment_sha256": "830e74e8e8de1a7904223e30a51154d4b6d541237f81df4a575e4283d54b7b6a",
+  "validation_mapping_commitment_sha256": "2cd153122ad5a276aa4d69ba2bc60317312e5a46b29edd985cc6d7df8e5ab700",
+  "discovery_packet_commitment_sha256": "2e68d07f46e2ad551078b35ac79b3921ff83a6f4029207a5ca661631a4db3388",
+  "holdout_packet_commitment_sha256": "6017a0514081ff7c5476a9f8dc6d9396d70ec4b5cbd8e324422f5b155722cb0e",
+  "discovery_reveal_key_sha256": "6e5c2fcc5a63c44bb413a1067bfde947153d472c5990c288f32b2601a09043f9",
+  "holdout_reveal_key_sha256": "7dacfc9f90af8e10a26e98801fe0cfab81d1d6f60c286f841b662f7a57c84883",
+  "annotation_template_sha256": "6cbe17c7420939c5ea09dbeaef9c06163e8b39d66c3a319acaff3b46b8f5fb13",
+  "frozen_documents_sha256": {
+    "experiments/E02_trajectory_localization/KNOWN_UNKNOWN.md": "13b3c7fd340864e24af3e3fac4423f7741c6e708a4b156e464a6a84be82ef265",
+    "experiments/E02_trajectory_localization/hypothesis_map_v0.1.md": "abc1fe4a965ce4fb1ca9e777eef8a29d24e530b70913c9e41a4f2b3773eb212f",
+    "experiments/E02_trajectory_localization/DISCOVERY_PROTOCOL.md": "26f20539b80234f1cef7de950639b787f9861a3221a9fef86d7fec8651cf4cc6",
+    "experiments/E02_trajectory_localization/annotation_codebook_v0.1.md": "24058e8ff42d08de0758188937b568771564844e83d491834ac593f50118a522",
+    "experiments/E02_trajectory_localization/blind_discovery.py": "0fe568a84837cd5b0ab88e3d625b02d9b34da3d5b874de69d03840edfdc866c4"
+  },
+  "private_keys_in_public_bundle": false,
+  "warning": "Hashes only. Do not replace this file from a private packet."
+}

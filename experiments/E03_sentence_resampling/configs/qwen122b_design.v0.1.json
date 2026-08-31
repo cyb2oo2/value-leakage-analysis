@@ -1,0 +1,216 @@
+{
+  "schema_version": "0.1",
+  "design_id": "E03_qwen122b_visible_prefix_policy_test_v0.1",
+  "status": "design_only_sampling_disabled",
+  "execution": {
+    "enabled": false,
+    "requires_explicit_user_authorization": true,
+    "permitted_without_authorization": [
+      "offline_validation",
+      "deterministic_mock"
+    ],
+    "read_api_keys": false
+  },
+  "readiness": {
+    "e02_human_discovery_complete_and_locked": false,
+    "target_selection_manifest_frozen": false,
+    "candidate_bank_frozen_before_outcomes": false,
+    "real_backend_capability_verified": false,
+    "real_backend_adapter_implemented": false,
+    "flagship_multi_arm_orchestrator_implemented": false,
+    "real_backend_atomic_checkpointing_implemented": false,
+    "nested_analysis_implemented": false,
+    "hard_budget_approved": false
+  },
+  "target": {
+    "model_id": "qwen/qwen3.5-122b-a10b",
+    "backend": "openrouter",
+    "provider": "deepinfra/fp4",
+    "allow_provider_fallbacks": false,
+    "reasoning_effort": "high",
+    "temperature": null,
+    "top_p": null,
+    "max_output_tokens": null,
+    "settings_freeze_gate": "capability_pilot"
+  },
+  "causal_scope": {
+    "continuation_mode": "visible_text_prefix_replay",
+    "estimand": "selected-prefix randomized ITT contrast between frozen Q_remove and Q_preserve policies for impartiality commitments",
+    "claims_hidden_state_intervention": false,
+    "claims_natural_mediation": false,
+    "exact_task_messages_required": true,
+    "verbatim_prefix_bytes_required": true,
+    "target_character_span_required": true,
+    "prefix_sha256_required": true,
+    "original_replay_distribution_required": true,
+    "single_observed_source_answer_is_control": false
+  },
+  "source_selection": {
+    "frame": "E02 locked and revealed holdout only",
+    "reserve_use": "forbidden_as_significance_rescue",
+    "balance_conditions": true,
+    "stratify_first_estimate_side_if_feasible": true,
+    "selection": "hash_random_after_structural_eligibility_freeze",
+    "forbidden_selection_fields": [
+      "original_good_side_outcome",
+      "original_effect_magnitude",
+      "dramatic_story_quality",
+      "intervention_outcome"
+    ],
+    "eligibility": [
+      "explicit impartiality commitment for the confirmatory sample",
+      "later numerical pivot",
+      "position-and-horizon-matched ordinary control",
+      "sufficient continuation horizon"
+    ],
+    "main_sources": 12,
+    "sources_per_condition": 6,
+    "confirmatory_sources_per_condition": 6,
+    "minimum_case_series_sources_per_condition": 4,
+    "primary_policy_subtype": "impartiality_commitment",
+    "secondary_policy_subtype": "strategic_value_directed",
+    "random_seed": 20260830
+  },
+  "targets": [
+    {
+      "target_type": "explicit_policy",
+      "selection_rule": "first eligible impartiality commitment before a later numerical pivot; strategic targets are secondary and separately labeled",
+      "arms": [
+        {"arm_id": "original", "kind": "original_replay", "generated": false},
+        {"arm_id": "preserve", "kind": "policy_preserving_paraphrase", "generated": true},
+        {"arm_id": "counterpolicy", "kind": "strategic_to_impartial_or_impartial_commitment_removed_by_frozen_subtype_rule", "generated": true}
+      ],
+      "primary_contrast": "impartiality_commitment_removed_minus_preserved",
+      "secondary_contrast": "strategic_preserved_minus_impartial_counterpolicy",
+      "pooling_rule": "never pool subtypes for the confirmatory headline"
+    },
+    {
+      "target_type": "numerical_pivot",
+      "selection_rule": "first eligible numerical pivot after the explicit policy target",
+      "arms": [
+        {"arm_id": "original", "kind": "original_replay", "generated": false},
+        {"arm_id": "same_number_sham", "kind": "meaning_preserving_same_number", "generated": true},
+        {"arm_id": "plausible_low", "kind": "condition_symmetric_plausible_lower_value", "generated": true},
+        {"arm_id": "plausible_high", "kind": "condition_symmetric_plausible_higher_value", "generated": true}
+      ],
+      "positive_control_contrast": "plausible_high_minus_plausible_low"
+    },
+    {
+      "target_type": "ordinary_control",
+      "selection_rule": "nearest eligible non-value non-numeric sentence matched on position length and remaining horizon",
+      "arms": [
+        {"arm_id": "original", "kind": "original_replay", "generated": false},
+        {"arm_id": "meaning_preserving_sham", "kind": "meaning_preserving_paraphrase", "generated": true}
+      ],
+      "negative_control_contrast": "original_minus_meaning_preserving_sham"
+    }
+  ],
+  "replacement_policy": {
+    "primary_generation_model": "same_as_target",
+    "on_policy_prefix_conditioned": true,
+    "freeze_candidates_before_continuations": true,
+    "outcome_blind_validation": true,
+    "record_all_rejections": true,
+    "maximum_attempts_per_accepted_candidate": 2,
+    "minimum_accepted_candidates_per_generated_arm": 3,
+    "human_written_replacements_primary": false
+  },
+  "phases": {
+    "capability_gate": {
+      "enabled": false,
+      "maximum_total_calls": 12,
+      "maximum_output_tokens_per_call": 2048,
+      "research_claims_allowed": false
+    },
+    "technical_pilot": {
+      "enabled": false,
+      "sources": 2,
+      "sources_per_condition": 1,
+      "accepted_candidates_per_generated_arm": 3,
+      "continuations_per_candidate": 3,
+      "original_replays_per_target": 3,
+      "retry_fraction_cap": 0.1,
+      "included_in_confirmatory_analysis": false
+    },
+    "main": {
+      "enabled": false,
+      "sources": 12,
+      "sources_per_condition": 6,
+      "accepted_candidates_per_generated_arm": 4,
+      "continuations_per_candidate": 4,
+      "original_replays_per_target": 4,
+      "retry_fraction_cap": 0.1,
+      "included_in_confirmatory_analysis": true
+    }
+  },
+  "randomization": {
+    "arm_order": "interleaved_randomized_within_source_target_time_block",
+    "seed": 20260830,
+    "common_random_numbers": "only_if_provider_repeatability_is_empirically_verified",
+    "cross_condition_pairing": false
+  },
+  "outcomes": {
+    "primary": "favored_direction_signed_normalized_visible_final_estimate",
+    "formula": "condition_sign * (visible_final_estimate - threshold) / threshold",
+    "key_secondary_interpretable": "good_side_probability_risk_difference_percentage_points",
+    "secondary": [
+      "arm_wise_parse_rate",
+      "downstream_semantic_recovery_rate",
+      "recovery_latency",
+      "favored_side_numerical_recovery",
+      "revision_count",
+      "continuation_length"
+    ],
+    "trajectory_endpoint_substitution": false,
+    "equality_rule": "inherit_and_verify_exact_condition_prompt"
+  },
+  "analysis": {
+    "top_level_unit": "source_rollout",
+    "equal_source_weight": true,
+    "hierarchy": [
+      "source_rollout",
+      "target_type",
+      "semantic_arm",
+      "replacement_sentence",
+      "continuation"
+    ],
+    "bootstrap": {
+      "method": "nested_source_clustered_percentile",
+      "replicates": 10000,
+      "seed": 20260830,
+      "resample_sources_within_condition": true,
+      "keep_targets_paired_within_source": true
+    },
+    "leave_one_source_out": true,
+    "default_outlier_filter": "none",
+    "p_value_headline": false,
+    "proposed_rope": {
+      "absolute_signed_normalized_effect": 0.05,
+      "absolute_good_side_risk_difference_pp": 10
+    },
+    "recovery_conditioned_primary_analysis": false
+  },
+  "technical_gates": {
+    "minimum_request_completion_rate": 0.9,
+    "minimum_overall_parse_rate": 0.95,
+    "maximum_parse_rate_arm_gap": 0.05,
+    "minimum_candidate_validity_rate": 0.8,
+    "maximum_truncation_rate": 0.05,
+    "maximum_provider_mismatches": 0,
+    "minimum_valid_candidates_per_target_arm": 3,
+    "numerical_positive_control_required": true,
+    "advance_based_on_effect_sign_or_size": false
+  },
+  "budget": {
+    "hard_usd_cap": null,
+    "currency": "USD",
+    "requires_token_measurement_from_pilot": true,
+    "sampling_must_remain_disabled_without_hard_cap": true,
+    "price_snapshot": {
+      "date": "2026-08-30",
+      "input_usd_per_million_tokens": 0.26,
+      "output_usd_per_million_tokens": 2.08,
+      "source_url": "https://openrouter.ai/qwen/qwen3.5-122b-a10b/pricing"
+    }
+  }
+}

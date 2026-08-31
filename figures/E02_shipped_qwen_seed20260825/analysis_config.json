@@ -1,0 +1,9 @@
+{
+  "seed": 20260825,
+  "grid_points": 1000,
+  "window_fraction": 0.2,
+  "outlier_factor": 10.0,
+  "bootstrap_resamples": 2000,
+  "confidence": 0.95,
+  "figure_dpi": 150
+}

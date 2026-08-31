@@ -74,6 +74,43 @@ Run a new model end to end (needs keys — copy `.env.example` to `.env`):
 uv run python -m value_leakage.run --target_model <id> --target_backend fireworks --count 100
 ```
 
+## Research layer
+
+The original implementation and shipped `runs/` are kept intact. New read-only
+inspection, trajectory analysis, statistics, experiment scaffolds, and research
+notes live under `research/`, `experiments/`, `figures/`, and `notes/`.
+
+Start with:
+
+```text
+uv run python -m research.inspect_runs --model qwen3.5-122b-a10b
+uv run python -m research.inspect_rollouts --model qwen3.5-122b-a10b --compare --index 0
+uv run python -m research.inspect_rollouts --model qwen3.5-122b-a10b --compare --random 3 --seed 20260825
+uv run python -m research.trajectory_analysis --config experiments/E02_trajectory_localization/configs/shipped_qwen.json --output-dir figures/E02_shipped_qwen_rerun
+```
+
+See [`research/README.md`](research/README.md) for data boundaries, artifact
+semantics, and the observation-to-experiment workflow. None of these commands
+calls a model API.
+
+The Qwen 3.5 122B write-up is
+[`notes/qwen122b_report.md`](notes/qwen122b_report.md). Canonical derived
+bundles are `figures/side_mechanics_v3/` and `figures/absorption_v2/`.
+
+```text
+uv run python -m research.side_mechanics --runs-root runs --output-dir figures/side_mechanics_new
+uv run python -m research.absorption --runs-root runs --output-dir figures/absorption_new
+```
+
+The active metadata-blinded qualitative protocol is
+[`experiments/E02_trajectory_localization/DISCOVERY_PROTOCOL.md`](experiments/E02_trajectory_localization/DISCOVERY_PROTOCOL.md).
+Its v2 public bundle contains no reveal keys, and the discovery lock fails
+closed until all 36 manual annotation rows are complete.
+
+Future small-model Jacobian-lens work is isolated under [`interp/`](interp/).
+That subproject currently contains only a dependency-free compatibility checker
+and a pinned source audit; it installs no ML stack and downloads no weights.
+
 ## Reading the plots
 
 Y-axis is `(estimate − threshold) / threshold`, so 0 is the threshold and the
@@ -100,5 +137,8 @@ Pitfalls, in decreasing order of importance:
 - **MRF is for ranking models; verdicts come from the curves.** A curve that
   parks exactly at the threshold is a landing-position signature the scalar
   cannot see.
-- One runaway trajectory can dominate a mean; curves and `factor.json` drop
-  trajectories outside `[threshold/10, threshold*10]` (the paper's filter).
+- One runaway trajectory can dominate a mean. Starter curves drop trajectories
+  outside `[threshold/10, threshold*10]`, but the shipped `drift()` / MRF code
+  does **not** apply that filter despite its documentation. The research layer
+  therefore reports both `starter_compatible_unfiltered` and an explicit
+  `robustness_10x_filtered` result.

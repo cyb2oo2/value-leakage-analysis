@@ -1,0 +1,44 @@
+{
+  "created_at_utc": "2026-08-25T08:11:27.283846+00:00",
+  "source_run": "D:\\code\\spar\\runs\\qwen3.5-122b-a10b_20260815_030702",
+  "script": "D:\\code\\spar\\research\\trajectory_analysis.py",
+  "script_sha256": "d3ad192ce8092ebdeabec5bc02c5a114f24d8d8ea03e33438bd4ec3bc529696b",
+  "analysis_version": "1",
+  "settings": {
+    "seed": 20260825,
+    "grid_points": 1000,
+    "window_fraction": 0.2,
+    "outlier_factor": 10.0,
+    "bootstrap_resamples": 2000,
+    "confidence": 0.95,
+    "figure_dpi": 150
+  },
+  "config_source": null,
+  "config_source_sha256": null,
+  "git_commit": "16d129859e1f0e281363fb4f5910bcaeea316b10",
+  "input_artifacts": {
+    "config.json": {
+      "present": true,
+      "sha256": "f80a0f3d33587831c7cd36b142d9be310a05a1c4e3746b3a76637ff62ceac191"
+    },
+    "threshold.json": {
+      "present": true,
+      "sha256": "16c67843dc2b1987f27b9f1a167f1cbf35c633b4425483d3ff197d0c226b878e"
+    },
+    "trajectories.json": {
+      "present": true,
+      "sha256": "ee25ad8289eeb58c3c49922147bacaabe4e17c937ea0d8e8d080e83098473bdc"
+    },
+    "estimates.json": {
+      "present": true,
+      "sha256": "f7a199c2777931286d71e300ee4f8485eda1d1d2d2956bc65221dd43f8668cb3"
+    }
+  },
+  "outputs": [
+    "analysis.json",
+    "analysis_config.json",
+    "provenance.json",
+    "trajectory_curves.png",
+    "final_estimate_distributions.png"
+  ]
+}

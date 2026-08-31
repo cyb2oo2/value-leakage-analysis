@@ -1,0 +1,68 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://local.invalid/e03/config.schema.json",
+  "title": "Sentence resampling experiment config",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "experiment_id",
+    "prompt_version",
+    "target_type",
+    "semantic_arm_id",
+    "continuation_mode",
+    "target_sentence_index",
+    "replacement_instruction",
+    "n_replacements",
+    "continuations_per_replacement",
+    "original_replay_continuations",
+    "require_verbatim_prefix",
+    "require_exact_task_messages",
+    "random_seed",
+    "backend"
+  ],
+  "properties": {
+    "experiment_id": {"type": "string", "minLength": 1},
+    "prompt_version": {"type": "string", "minLength": 1},
+    "target_type": {"type": "string", "minLength": 1},
+    "semantic_arm_id": {"type": "string", "minLength": 1},
+    "continuation_mode": {
+      "enum": [
+        "visible_text_prefix_replay",
+        "hidden_cot_internal_state_continuation"
+      ]
+    },
+    "target_sentence_index": {
+      "type": "integer",
+      "minimum": 1,
+      "description": "One-based index into the authoritative manual sentence list."
+    },
+    "replacement_instruction": {"type": "string", "minLength": 1},
+    "n_replacements": {"type": "integer", "minimum": 1},
+    "continuations_per_replacement": {"type": "integer", "minimum": 1},
+    "original_replay_continuations": {
+      "type": "integer",
+      "minimum": 1,
+      "description": "Fresh continuations from exact P + original Si; never replace with the observed source answer."
+    },
+    "require_verbatim_prefix": {
+      "type": "boolean",
+      "description": "Fail unless visible_reasoning_text and validated character spans permit verbatim prefix construction."
+    },
+    "require_exact_task_messages": {
+      "type": "boolean",
+      "description": "Fail unless the source includes the exact role/content message transcript."
+    },
+    "random_seed": {"type": "integer", "minimum": 0},
+    "backend": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["backend", "model_id", "provider", "settings"],
+      "properties": {
+        "backend": {"type": "string", "minLength": 1},
+        "model_id": {"type": "string", "minLength": 1},
+        "provider": {"type": ["string", "null"]},
+        "settings": {"type": "object"}
+      }
+    }
+  }
+}

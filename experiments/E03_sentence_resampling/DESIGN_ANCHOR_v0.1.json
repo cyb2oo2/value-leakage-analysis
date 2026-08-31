@@ -1,0 +1,41 @@
+{
+  "schema_version": "0.1",
+  "design_id": "E03_qwen122b_visible_prefix_policy_test_v0.1",
+  "created_at_utc": "2026-08-30T16:38:37.8932401Z",
+  "status": "draft_design_hash_anchor_not_a_confirmatory_preregistration",
+  "sampling_enabled": false,
+  "api_calls_made": 0,
+  "source_commit": "16d129859e1f0e281363fb4f5910bcaeea316b10",
+  "working_tree_dirty": true,
+  "verification": {
+    "command": ".\\.venv\\Scripts\\python.exe -m unittest discover -s tests -v",
+    "tests_passed": 63,
+    "tests_failed": 0,
+    "design_audit_status": "PASS_OFFLINE_NOT_READY_FOR_REAL_SAMPLING"
+  },
+  "unresolved_execution_gates": [
+    "E02 human discovery is incomplete and not locked",
+    "confirmatory target-selection manifest is not frozen",
+    "all source-target-arm candidate banks are not jointly frozen",
+    "real backend capability is not verified",
+    "real backend adapter is not implemented",
+    "flagship multi-arm orchestrator is not implemented",
+    "durable pre-outcome manifest and atomic per-call checkpointing are not implemented",
+    "nested source-level analysis is not implemented",
+    "sampling settings and a hard USD cap are not approved"
+  ],
+  "files_sha256": {
+    "FORMAL_HYPOTHESES_v0.1.md": "97b32641bf06350db7f00bb9cb3bde1a3be68911689381a57962122496276445",
+    "PREREGISTRATION_DRAFT_v0.1.md": "86a20e10c8930eaaac79b2a013bd72953aa1849ecec78fd1f276f1c5ba9e7323",
+    "configs/qwen122b_design.v0.1.json": "86e9b7cbde6a2a3aac3426ac881853846b40a891ebb36aad48d6d490139260b1",
+    "design.py": "169663e1a585ad5026345749123a2b23795695a9de8506f247794c37e4729b41",
+    "pipeline.py": "f3427e733852478ee96786fda17e1ea624c157341ff47677e1bb604611884e29",
+    "README.md": "7b708aa269861a6d2ffbd70ee4b751b7b8981628d31b27ceb8202644199d3661",
+    "schemas/config.schema.json": "cb1755beaea7f35ac6a28e5c2926a99bd8f51c09c7e070fedc38eccd892ddeaf",
+    "schemas/results.schema.json": "a5c10d30c233ce513ab5f7907fef99b25406531a1856573c6206ea2277049076",
+    "schemas/source.schema.json": "9d4b2fcb17eda106e074a3c1accfc471a670892536c8972369a42aad89141ef4",
+    "../../tests/test_sentence_resampling.py": "5e289b7155406795375f1ef668a1fe54999e05c971ef6ed81cab0818d5513e42",
+    "../../tests/test_sentence_resampling_design.py": "e8bce603b0cc3d0d93e57fa79c2108fbfd14697fdc29fbaff3e791c8afb5ad24"
+  },
+  "manifest_self_hash_included": false
+}

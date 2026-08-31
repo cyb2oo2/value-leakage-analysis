@@ -1,0 +1,56 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://local.invalid/e03/source.schema.json",
+  "title": "Manually segmented source trajectory",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "source_id",
+    "condition",
+    "threshold",
+    "task_prompt",
+    "sentences",
+    "visible_final_answer",
+    "parsed_final_estimate"
+  ],
+  "properties": {
+    "source_id": {"type": "string", "minLength": 1},
+    "condition": {"type": "string", "minLength": 1},
+    "threshold": {"type": "number", "exclusiveMinimum": 0},
+    "task_prompt": {"type": "string", "minLength": 1},
+    "task_messages": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["role", "content"],
+        "properties": {
+          "role": {"type": "string", "minLength": 1},
+          "content": {}
+        }
+      }
+    },
+    "visible_reasoning_text": {
+      "type": ["string", "null"],
+      "description": "Exact visible reasoning bytes used with sentence character spans."
+    },
+    "sentences": {
+      "type": "array",
+      "minItems": 1,
+      "description": "Authoritative manual segmentation. Runtime validation requires contiguous ids S1..ST.",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["sentence_id", "text"],
+        "properties": {
+          "sentence_id": {"type": "string", "pattern": "^S[1-9][0-9]*$"},
+          "text": {"type": "string", "minLength": 1},
+          "start_char": {"type": ["integer", "null"], "minimum": 0},
+          "end_char": {"type": ["integer", "null"], "minimum": 1}
+        }
+      }
+    },
+    "visible_final_answer": {"type": "string"},
+    "parsed_final_estimate": {"type": ["number", "null"]},
+    "metadata": {"type": "object"}
+  }
+}

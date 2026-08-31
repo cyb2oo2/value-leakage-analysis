@@ -1,0 +1,125 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://local.invalid/e03/results.schema.json",
+  "title": "Sentence resampling result bundle",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "experiment_id",
+    "target_type",
+    "semantic_arm_id",
+    "continuation_mode",
+    "capabilities",
+    "visible_final_answer_policy",
+    "protocol_integrity",
+    "original_replay",
+    "replacement_groups",
+    "comparison"
+  ],
+  "properties": {
+    "schema_version": {"const": "1.1"},
+    "experiment_id": {"type": "string"},
+    "target_type": {"type": "string"},
+    "semantic_arm_id": {"type": "string"},
+    "continuation_mode": {
+      "enum": ["visible_text_prefix_replay", "hidden_cot_internal_state_continuation"]
+    },
+    "capabilities": {
+      "type": "object",
+      "required": [
+        "replacement_generation",
+        "visible_text_prefix_replay",
+        "arbitrary_hidden_cot_internal_state_continuation"
+      ]
+    },
+    "visible_final_answer_policy": {"type": "string"},
+    "protocol_integrity": {
+      "type": "object",
+      "required": [
+        "scope",
+        "flagship_multi_arm_protocol_complete",
+        "candidate_bank_sha256",
+        "candidate_bank_frozen_before_continuations",
+        "continuation_schedule_seed",
+        "continuation_schedule_randomized_before_sampling"
+      ],
+      "properties": {
+        "scope": {"const": "single_source_single_semantic_arm_mock_protocol_shape"},
+        "flagship_multi_arm_protocol_complete": {"const": false},
+        "candidate_bank_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        "candidate_bank_frozen_before_continuations": {"const": true},
+        "continuation_schedule_seed": {"type": "integer", "minimum": 0},
+        "continuation_schedule_randomized_before_sampling": {"const": true}
+      }
+    },
+    "original_replay": {
+      "type": "object",
+      "required": ["intervention_arm", "continuations"],
+      "properties": {
+        "intervention_arm": {"const": "original_replay"},
+        "continuations": {"type": "array"}
+      }
+    },
+    "replacement_groups": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "replacement_index",
+          "replacement_request_id",
+          "replacement_response",
+          "continuations"
+        ],
+        "properties": {
+          "replacement_index": {"type": "integer", "minimum": 0},
+          "replacement_request_id": {"type": "string"},
+          "replacement_response": {
+            "type": "object",
+            "required": ["replacement_text", "raw_response"]
+          },
+          "continuations": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": ["continuation_index", "request_id", "request", "response"],
+              "properties": {
+                "continuation_index": {"type": "integer", "minimum": 0},
+                "request_id": {"type": "string"},
+                "request": {"type": "object"},
+                "response": {
+                  "type": "object",
+                  "required": [
+                    "continuation_text",
+                    "visible_final_answer",
+                    "parsed_final_estimate",
+                    "raw_response"
+                  ],
+                  "properties": {
+                    "continuation_text": {"type": "string"},
+                    "visible_final_answer": {"type": "string"},
+                    "parsed_final_estimate": {"type": ["number", "null"]},
+                    "raw_response": {"type": "object"}
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "comparison": {
+      "type": "object",
+      "required": [
+        "source_visible_final_answer",
+        "source_parsed_final_estimate",
+        "source_observed_answer_role",
+        "original_replay_visible_final_estimates",
+        "n_original_replay_visible_final_estimates",
+        "resampled_visible_final_estimates",
+        "n_resampled_visible_final_estimates",
+        "by_replacement",
+        "interpretation"
+      ]
+    }
+  }
+}

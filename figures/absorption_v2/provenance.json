@@ -1,0 +1,15 @@
+{
+  "schema_version": "value-leakage.absorption-provenance/v1",
+  "created_at_utc": "2026-08-31T10:25:14+00:00",
+  "analysis_version": "value-leakage.absorption/v1",
+  "code_commit": "16d129859e1f0e281363fb4f5910bcaeea316b10",
+  "code_dirty": true,
+  "tool": "D:\\code\\spar\\research\\absorption.py",
+  "tool_sha256": "f7dd79693a9906d74120e2679105ab60c628f634b45e5efaa4028baba8359c4d",
+  "outputs": {
+    "analysis.json": "506ed6a0789e8b22f6fd62e6c9e378fc894dd96377374ba16665d48ed2e6b526",
+    "REPORT.md": "519e7f5443965ae06514c2bd1d5bb2acb338889bd765d75ade69b55b5c9999d3",
+    "convert_vs_leak.png": "d4759d961d3292aa862d76d31dcfa285b646cd748554c1e3fc4229ceaf6e4374",
+    "visible_final_sides.png": "dcbc408c695bdc9e671c2593d49ffde382f7a127dea141307057df9c5cc0d248"
+  }
+}

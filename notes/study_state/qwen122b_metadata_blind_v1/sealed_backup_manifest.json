@@ -1,0 +1,11 @@
+{
+  "schema_version": "value-leakage.sealed-backup-manifest/v1",
+  "study_id": "qwen122b_metadata_blind_v1",
+  "created_at": "2026-08-27",
+  "source_bundle": "derived/E02_trajectory_localization/qwen122b_metadata_blind_v1",
+  "discovery_reveal_key_sha256": "470acff8e07723457484bbcb953a05f5c933f75264a8b521bcc8a7e3c2f2b87a",
+  "holdout_reveal_key_sha256": "3f87c4c874e8cb5a34e3116b1a98af5e2388daeaddc6b8f5af94aa628037b704",
+  "discovery_mapping_commitment_sha256": "d68086d255f35c35613abdbb59f475717fa8db5e7579856bf1f5d531ad588434",
+  "validation_mapping_commitment_sha256": "870689f69318f0da72ec955ffd992ef86ff75525727a3a629167b772463e8576",
+  "warning": "Do not open or commit the ignored sealed JSON keys before their reveal gates."
+}
