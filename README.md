@@ -142,3 +142,11 @@ Pitfalls, in decreasing order of importance:
   does **not** apply that filter despite its documentation. The research layer
   therefore reports both `starter_compatible_unfiltered` and an explicit
   `robustness_10x_filtered` result.
+
+## Credits
+
+The sampling pipeline, judges, plots, and shipped `runs/` come from
+[Aditya Singh](https://github.com/adsingh-64)
+([`adsingh-64/value-leakage`](https://github.com/adsingh-64/value-leakage)).
+The `research/`, `experiments/`, `figures/`, and `notes/` layer is additional
+read-only analysis on top of that artifact.
